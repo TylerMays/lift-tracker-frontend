@@ -1,122 +1,12 @@
-<div class="container">
+<div class="container" ng-controller="Ctrl">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
-      <div job-state ng-repeat="job in jobList" class="item">
-        <form ng-submit="saveJob(job, jobCopy, $last)">
+      <div ng-repeat="item in list" class="item">
 
-        <pre>{{ job | json }}</pre>
-
-          <!-- <div class="item_well">
-
-            <div class="row row--rule">
-              <div class="col-md-12">
-                <div class="input-group">
-                  <span class="input-group-addon">$</span>
-                  <input type="text" class="input-group-addon form-control"
-                         placeholder="rake do_something"
-                         ng-model="jobCopy.name"
-                         ng-show="checkIfEditing($last, job)"/>
-                  <input type="text" class="input-group-addon form-control"
-                         value="{{job.name}}" disabled
-                         ng-hide="checkIfEditing($last, job)" />
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-
-              <div class="col-md-3 col-sm-3 col-xs-6">
-                <h6>Dyno Size</h6>
-                <select class="select-block"
-                        ng-model="jobCopy.dynoSize"
-                        ng-show="checkIfEditing($last, job)">
-                  <option value="Free">Free</option>
-                </select>
-                <span ng-hide="checkIfEditing($last, job)">{{job.dynoSize}}</span>
-              </div>
-
-              <div class="col-md-3 col-sm-3 col-xs-6">
-                <h6>Frequency</h6>
-                <select class="select-block"
-                        ng-model="jobCopy.frequency"
-                        ng-options="opt for opt in frequencyOpts"
-                        ng-show="checkIfEditing($last, job)">
-                </select>
-                <span ng-hide="checkIfEditing($last, job)">{{job.frequency}}</span>
-              </div>
-
-              <div class="col-md-3 col-sm-3 col-xs-6">
-                <h6>Last Run</h6>
-                <span>{{job.lastRun}}</span>
-              </div>
-
-              <div class="col-md-3 col-sm-3 col-xs-6">
-                <h6>Next Due</h6>
-                <span ng-show="checkIfEditing($last, job)">
-                  <span ng-if="isFrequencySelected('Daily', jobCopy.frequency)">
-                    {{ now() | date:'MMM dd' }}
-                    <select ng-model="jobCopy.nextDue"
-                            ng-options="opt for opt in nextDueOpts(jobCopy.frequency)">
-                    </select>
-                  </span>
-                  <span ng-if="isFrequencySelected('Hourly', jobCopy.frequency)">
-                    <select ng-model="jobCopy.nextDue"
-                            ng-options="opt.value as opt.text for opt in nextDueOpts(jobCopy.frequency) track by opt.value">
-                    </select>
-                  </span>
-                  <span ng-if="isFrequencySelected('Every 10 minutes', jobCopy.frequency)"
-                        ng-init="jobCopy.nextDue=inTenMinutes()">
-                    {{ now() | date:'MMM dd' }} {{inTenMinutes()}}</span>
-                </span>
-                <span ng-hide="checkIfEditing($last, job)">
-                  {{ now() | date:'MMM dd' }} {{job.nextDue}}</span>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="item_actions">
-            <button type="button" class="btn btn-default btn-xs on-hover"
-                    ng-click="startEditing(job)"
-                    ng-hide="checkIfEditing($last, job)">Edit</button>
-            <a class="btn-xs btn-link"
-                    ng-click="startRemoving()"
-                    ng-hide="checkIfEditing($last, job)">Remove</a>
-
-            <input type="submit" value="Save" class="btn btn-xs btn-primary"
-                   ng-focus="true"
-                   ng-show="checkIfEditing($last, job)">
-            <a class="btn btn-xs btn-link"
-                    ng-click="cancelEditing($last, job)"
-                    ng-show="checkIfEditing($last, job)">Cancel</a>
-
-            <div class="confirm" ng-if="isRemoving">
-              <h4>Delete Scheduled Job</h4>
-              <p>Sure you want to delete this job?</p>
-              <div>
-                <a class="btn btn-inverted-link"
-                        ng-click="cancelRemoving()">Cancel</a>
-                <a class="btn btn-primary"
-                        ng-click="deleteJob(job)">Delete Job</a>
-              </div>
-            </div>
-          </div> -->
-
-        </form>
+        <pre>{{ item | json }}</pre>
 
       </div>
-
-      <!-- <div class="purple-box u-padding-Am u-margin-Tl u-margin-Bm text-center"
-           ng-if="!jobList.length">
-        <h3>Schedule tasks</h3>
-      </div>
-
-      <button class="btn btn-lg btn-block btn-primary btn-job"
-              ng-click="startCreating()"
-              ng-hide="isCreating">Add new job</button> -->
-
     </div>
   </div>
 </div>
